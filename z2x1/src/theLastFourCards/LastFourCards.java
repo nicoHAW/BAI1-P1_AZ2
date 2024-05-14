@@ -15,24 +15,25 @@ import static cards.Card.Constant.*;
  * @version (a version number or a date)
  */
 public class LastFourCards {
-    
+
     Card firstCard;
     Card secondCard;
     Card thirdCard;
     Card fourthCard;
-    
-    
-    
+    int cardsDrawn;
+
+
+
     /**
      * in the beginning there isn't any card known
      */
     public LastFourCards(){
         // U.U. könnte hier Code ergänzt werden.
     }//method()
-    
-    
-    
-    
+
+
+
+
     /**
      * print the last four cards
      */
@@ -40,7 +41,7 @@ public class LastFourCards {
         // Ersetzen Sie diesen Kommentar durch Ihren Code.
         // Geben Sie die letzen vier Karten aus.
     }//method()
-    
+
     /**
      * process new card
      * 
@@ -51,5 +52,5 @@ public class LastFourCards {
         // Verarbeite die neue Karte. Ueber card ist die neu Karte ansprechbar,
         // die nun "gemerkt" werden soll.
     }//method()
-    
+
 }//class
