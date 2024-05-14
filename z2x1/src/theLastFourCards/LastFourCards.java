@@ -16,8 +16,10 @@ import static cards.Card.Constant.*;
  */
 public class LastFourCards {
     
-    // Mögliche Zustandsvariablen/Exemplarvariablen/Objekt-spezifische Variablen
-    // ... ???
+    Card firstCard;
+    Card secondCard;
+    Card thirdCard;
+    Card fourthCard;
     
     
     
