@@ -49,7 +49,7 @@ public class LastFourCards {
         } else if (cardsDrawn == 1)  {
             System.out.printf("%s %n%n", firstCard);
 
-        } 
+        } //else if
         
 
         
