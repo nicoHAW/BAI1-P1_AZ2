@@ -23,7 +23,6 @@ public class LastFourCards {
     int cardsDrawn;
 
 
-
     /**
      * in the beginning there isn't any card known
      */
@@ -38,8 +37,22 @@ public class LastFourCards {
      * print the last four cards
      */
     public void printLastFourCards(){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Geben Sie die letzen vier Karten aus.
+        if (cardsDrawn >= 4) {
+            System.out.printf("%s %s %s %s %n%n", fourthCard, thirdCard, secondCard, firstCard);
+        
+        } else if (cardsDrawn == 3) {
+            System.out.printf("%s %s %s %n%n",  thirdCard, secondCard, firstCard);
+
+        } else if (cardsDrawn == 2) {
+            System.out.printf("%s %s %n%n", secondCard, firstCard);
+
+        } else if (cardsDrawn == 1)  {
+            System.out.printf("%s %n%n", firstCard);
+
+        } 
+        
+
+        
     }//method()
 
     /**
@@ -48,9 +61,13 @@ public class LastFourCards {
      * @param card current card
      */
     public void processNewCard( Card card ){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Verarbeite die neue Karte. Ueber card ist die neu Karte ansprechbar,
-        // die nun "gemerkt" werden soll.
+        fourthCard = thirdCard;
+        thirdCard = secondCard;
+        secondCard = firstCard;
+        firstCard = card;
+        cardsDrawn++;
+        
+        
     }//method()
 
 }//class
