@@ -40,18 +40,20 @@ public class PrimeFactorPrinter {
 
         System.out.printf("Primfaktoren %d = ", number); 
 
+
         do {
             result = number % prime;
-            
+
             if (result == 0) {
                 System.out.printf("%d", prime);
                 number = number / prime;
-                
+
                 if (number != 1) {                 
                     System.out.print("*"); } //inner if end.
             } //outer if end
             else {
-                prime++; }
+                prime++;
+            }
         } while (number != 1);
 
         System.out.println("");

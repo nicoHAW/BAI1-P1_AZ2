@@ -21,12 +21,12 @@ package theLastThree;
 /**
  * The {@link LastThree} - see task
  * 
- * @author  (your name(s)) 
- * @version (a version number or a date)
+ * @author  Nico, Pedro 
+ * @version 16Mai24
  */
 public class LastThree {
     
-    int counter;            // Counts processNewValue
+    int inputCounter;            // Counts processNewValue
     int lastNumber;         // Remebers last Number
     int scndLastNumber;     // Remebers second last Number
     int thrdLastNumber;    // Remebers third last Number
@@ -38,7 +38,7 @@ public class LastThree {
      */
     public LastThree(){
 
-        counter = 0;
+        inputCounter = 0;
         lastNumber = 0;
         scndLastNumber = 0;
         thrdLastNumber = 0;
@@ -52,17 +52,14 @@ public class LastThree {
      */
     public void printLastThree(){
        
-        assert counter < 0 : "\n Programmfehler - Bitte Zahl eingeben!";
-        
-        if(counter >= 3) {
+        // prints content of variables based on counter value. 
+        if(inputCounter >= 3) {
             System.out.printf("%d, %d, %d", lastNumber, scndLastNumber, thrdLastNumber);
-        } else if (counter == 2) {
-            System.out.printf("%d, %d", lastNumber, scndLastNumber);
-        } else if (counter == 1) {
-            System.out.printf("%d, %d", lastNumber);
-        }else {
-            System.out.printf("Bitte eine Nummer eingeben.");
-        }
+        } else if (inputCounter == 2) {
+            System.out.printf("%d, %d", scndLastNumber, thrdLastNumber);
+        } else if (inputCounter == 1) {
+            System.out.printf("%d", thrdLastNumber);
+        } 
 
         
     }//method()
@@ -73,7 +70,8 @@ public class LastThree {
      * @param value  current value
      */
     public void processNewValue( int value ){
-       counter++;
+       inputCounter++; // increases counter values for every "drawn" number. 
+       // takes value and passes it through variables if more than one number. 
        lastNumber = scndLastNumber;
        scndLastNumber = thrdLastNumber;
        thrdLastNumber = value;
