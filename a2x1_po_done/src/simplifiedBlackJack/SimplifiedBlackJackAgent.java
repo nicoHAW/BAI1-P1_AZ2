@@ -23,63 +23,112 @@ public class SimplifiedBlackJackAgent {
     // sofern derartiges benoetigt wird.
     // Es ist Ihre Entscheidung und sie sollte Sinn machen.
 
+    private int playerScore = 0; // Total score of the player's hand
+    private int playerCardsQuantity = 0; // Number of cards in the player's hand
+
+    public int convertRank(Card card) 
+    /**
+     * Converts the rank of a card into its numerical value according to Blackjack rules.
+     * 
+     * @param card The Card object to be converted.
+     * @return The numerical value of the card.
+     */
+    {
+        Rank rank = card.getRank(); //proceeded with getRank instead of value to switch the points based on the card type.
+        switch (rank) {
+            case ACE:
+                return 11;
+            case KING:
+            case QUEEN:
+            case JACK:
+                return 10;
+            case TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN:
+                return (int)rank.value();
+
+            default:
+                assert false : "Rank ist fehlerhaft";
+                return 0;
 
 
+        }
+    } 
 
 
+    public void updatePlayerHandTotal(Card[] arr) {
+        /**
+         * Calculates and updates the total score for the player's hand.
+         * 
+         * @param arr Array of Card objects representing the player's hand.
+         */
+        playerScore = 0;
+        for (Card card : arr) {
+            if (card != null) {  // Check if the card is not null since the array has 11 positions
+                playerScore += convertRank(card);
+            }
+        }
+    }
+
+    public void showPlayerHand(Card[] arr) 
+    /**
+     * Displays the player's hand.
+     * Each card is printed on the same line.
+     * 
+     * @param arr Array of Card objects representing the player's hand.
+     */
+    {
+        System.out.println("This is your current hand:");
+        for(Card card : arr ) {
+            if (card != null) {
+                System.out.print(card);
+            }
+        }
+        System.out.println();
+    } 
     /**
      * "Play" Black Jack
      */
     public void playBlackJack(){
 
-        //DECLARATION
-        Card   c;
+        Card[] playerHand; // declare the player hand
+        playerHand = new Card[11]; //initialize the array with the max length (11 cards is the min quantity of cards to achieve 21)
+        Deck newDeck = new Deck(); // create a deck with new cards
+        //...
+        System.out.println("----------------------");
+        System.out.println(" Blackjack game start");
+        System.out.println("----------------------");
+        System.out.println();
 
-        //INITIALISATION
-        int points = 0;
-        int rank = 0;
-        int hand = 0;
-        
-        //Create new deck
-        Deck   d = new Deck();
+        //TODO do - while - done 
+        do {
 
-        //CARD DEAL LOOP
-        do {    //Loop start
-        c = d.deal();
-        
-        System.out.printf("Gezogene Karte %s %n", c); //print drawn card
+            playerHand[playerCardsQuantity] = newDeck.deal(); //changing the element in the array based on the current index (index based on playerCardsQty)
+            playerCardsQuantity++; // increase the variable so the index position is now +1 
+            updatePlayerHandTotal(playerHand);
 
-        //Convert card rank to points
-        rank = c.getRank().value();
-        
-        switch( rank ){
-            case 2: points=2; break;
-            case 3: points=3; break;
-            case 4: points=4; break;
-            case 5: points=5; break;
-            case 6: points=6; break;
-            case 7: points=7; break;
-            case 8: points=8; break;
-            case 9: points=9; break;
-            case 10, 11, 12, 13:
-                    points=10; break;
-            case 14: points=11; break;
-            default:
-                assert false: "invalid rank";
-                points=0; break; }
-        
-        hand += points; //add points to hand
-        
+            //TODO 21 und >21 soll hinter die Schleife - done
 
-        System.out.printf("Die Karte hat %d Punkte %n%n",points); // print points of drawn card.
-        System.out.printf("Punkte auf der Hand %d: %n%n", hand); // print total points of hand.
+            System.out.printf("Your hand's total is now... %d\n",playerScore);
+            showPlayerHand(playerHand);
 
-        } while (hand < 17); //Loop end
-        
-        //Print if Lost
-         if (hand > 21) {
-             System.out.print("LOST");
-         } 
+        } while (playerScore<=17);
+
+        if(playerScore >21) {
+            System.out.printf("Your hand's total is... %d\n",playerScore);
+            showPlayerHand(playerHand);
+            System.out.println("This means that you are over 21...");
+            System.out.println("Unfortunately you LOST");
+            
+        } else if (playerScore==21) {
+            System.out.printf("Your hand's total is... %d\n",playerScore);
+            showPlayerHand(playerHand);
+            System.out.printf("I feel something magical.,.\n");
+            System.out.printf("Your hand's total is... %d... this can't be!\n",playerScore);
+            System.out.println("THIS IS A BLACK JACK!!");
+            System.out.println("Congratulations! You won!!");
+        }
+
+
+
 
 
 
