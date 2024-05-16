@@ -33,8 +33,7 @@ public class SimplifiedBlackJackAgent {
      * @param card The Card object to be converted.
      * @return The numerical value of the card.
      */
-    {
-        Rank rank = card.getRank(); //proceeded with getRank instead of value to switch the points based on the card type.
+    { Rank rank = card.getRank(); //proceeded with getRank instead of value to switch the points based on the card type.
         switch (rank) {
             case ACE:
                 return 11;
@@ -48,10 +47,8 @@ public class SimplifiedBlackJackAgent {
             default:
                 assert false : "Rank ist fehlerhaft";
                 return 0;
-
-
-        }
-    } 
+        } // end switch
+    } // end method Rank
 
 
     public void updatePlayerHandTotal(Card[] arr) {
