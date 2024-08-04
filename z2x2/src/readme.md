@@ -1,1 +1,0 @@
-P1 :  Sieve of Eratosthenes
