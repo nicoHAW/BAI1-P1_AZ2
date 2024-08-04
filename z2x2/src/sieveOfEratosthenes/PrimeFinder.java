@@ -11,7 +11,7 @@ package sieveOfEratosthenes;
  * @version  (a version number or a date)
  */
 public class PrimeFinder {
-    
+
     /**
      * find primes using sieve of Eratosthenes
      * 
@@ -34,15 +34,30 @@ public class PrimeFinder {
         //###               VVVVVVVVVVVVVV
         //###                  VVVVVVVV
         //###                     VV
-        
-        
-        // Fügen Sie hier Ihren Code ein
-        // bzw. ersetzen Sie diesen Kommentar durch Ihren Code.
-        // ...
-        
-        
+
+        int numberOfPrimes = 100;
+        int [] primes;
+        primes = new int[numberOfPrimes];
+        int divider;
+        int result;
+        int modulo;
+
+        for (int i; i < numberOfPrimes; i++) {
+            primes[i]=i;
+            result=primes[i]%modulo;
+
+            if (result == 0) {
+                primes[i]=0;
+            } else {
+                modulo++;
+            } //ifelse
+
+        } //for
+
+
+
         //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         System.out.flush();
     }//method()
-    
+
 }//class

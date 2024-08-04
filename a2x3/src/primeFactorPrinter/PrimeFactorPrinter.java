@@ -25,61 +25,43 @@ package primeFactorPrinter;
  * @version  (a version number or a date)
  */
 public class PrimeFactorPrinter {
-    
+
     /**
      * print factorization of given number
      * 
      * @param number the number to be factorized
      */
     public void printFactorization( long number ){
-        //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-        //###
-        //###
-        //###
-        //###           HIER kommt Ihr Code hin
-        //###
-        //###                    VVVV
-        //###                    VVVV
-        //###                    VVVV
-        //###   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###      VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###         VVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###            VVVVVVVVVVVVVVVVVVVV
-        //###               VVVVVVVVVVVVVV
-        //###                  VVVVVVVV
-        //###                     VV
-        
 
-         long prime = 2;
-         long result;
-         
-         assert number >= 2 : "Bitte eine gültige Zahl > 2 eingeben.";
-         
-         System.out.printf("Primfaktoren %d = ", number); 
-         
-         do {
-             
-             result = number % prime;
-             
-             if (result == 0) {
-                 System.out.printf("%d", prime);
-                 number = number / prime;
+        long prime = 2;
+        long result;
 
-                 if (number != 1) {                 
-                     System.out.print("*");
-                 }               
-             } else {
-                 prime++; 
-                 }
+        assert number >= 2 : "Bitte eine gültige Zahl > 2 eingeben.";
 
-         } while (number != 1);
-
-         System.out.println("");
-System.out.println("\n##### Ende #####");
+        System.out.printf("Primfaktoren %d = ", number); 
 
 
-        
-        
+        do {
+            result = number % prime;
+
+            if (result == 0) {
+                System.out.printf("%d", prime);
+                number = number / prime;
+
+                if (number != 1) {                 
+                    System.out.print("*"); } //inner if end.
+            } //outer if end
+            else {
+                prime++;
+            }
+        } while (number != 1);
+
+        System.out.println("");
+        System.out.println("\n##### Ende #####");
+
+
+
+
         //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         // Sofern Sie kein Vorwissen haben und/oder NICHT wissen was Sie tun
         // führen Sie KEINE! Änderungen unterhalb dieser Zeilen durch.
@@ -87,16 +69,16 @@ System.out.println("\n##### Ende #####");
         //
         System.out.flush();
     }//method()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
     // Den folgenden Code selbst müssen Sie NICHT verstehen!
     // Wichtig für Sie ist nur das Interface.
     //      long integerSquareRoot( long )
@@ -134,38 +116,38 @@ System.out.println("\n##### Ende #####");
      */
     public long integerSquareRoot( final long value ){
         if( 0 > value )  throw new IllegalArgumentException( String.format( "Parameter %d has to be positive",  value ));
-        
-        
+
+
         long approximation = 0;                                                 // the approximation itself
         if( value < (1L<<62) ){
             //\=> can be handled the fast way
-            
+
             // determine msb position of approximation resp. later sqrt  resp. start position of "walking one setter"
             long tmp = value;                                                   // temporary to determine maxb position of approximation
             int currentBitPosition = 0;                                         // current bit position where setting of bit is tested
             if( 0 < tmp ){
                 tmp >>>= 2;
-                approximation = 1;
-                while( 0 < tmp ){
-                    tmp >>>= 2;
-                    approximation <<= 1;
-                    currentBitPosition++;
-                }//while
-                
-                // start of actual integer square root computation
-                // compute integer square root with: w = integerSqrt(x)    =>    (w+1)*(w+1) > x  &&  w*w <= x 
-                long remainder = value - (approximation<<currentBitPosition);
-                do{
-                    final long refinement = 1L<<currentBitPosition;
-                    final long trialResult =  remainder  -  (((approximation<<1) + refinement) << currentBitPosition);
-                    if( 0 <= trialResult ){
-                        remainder = trialResult;
-                        approximation += refinement;
-                    }//while
-                    currentBitPosition--;
-                }while( currentBitPosition >= 0 );
+        approximation = 1;
+        while( 0 < tmp ){
+            tmp >>>= 2;
+        approximation <<= 1;
+        currentBitPosition++;
+        }//while
+
+        // start of actual integer square root computation
+        // compute integer square root with: w = integerSqrt(x)    =>    (w+1)*(w+1) > x  &&  w*w <= x 
+        long remainder = value - (approximation<<currentBitPosition);
+        do{
+            final long refinement = 1L<<currentBitPosition;
+            final long trialResult =  remainder  -  (((approximation<<1) + refinement) << currentBitPosition);
+            if( 0 <= trialResult ){
+                remainder = trialResult;
+                approximation += refinement;
+            }//while
+            currentBitPosition--;
+        }while( currentBitPosition >= 0 );
             }//if
-            
+
         }else{
             //\=> Math.sqrt() is used that might result in rounding errors less or equal than +/-512
             // and further:
@@ -209,8 +191,8 @@ System.out.println("\n##### Ende #####");
                 }//if
             }//if
         }//if
-        
+
         return approximation;
     }//method()
-    
+
 }//class
