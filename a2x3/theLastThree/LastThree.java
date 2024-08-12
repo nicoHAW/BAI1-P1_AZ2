@@ -21,55 +21,64 @@ package theLastThree;
 /**
  * The {@link LastThree} - see task
  * 
- * @author  (your name(s)) 
- * @version (a version number or a date)
+ * @author  Nico Pätzel 
+ * @version 2023/08/12 Version 1
  */
 public class LastThree {
-    
-    //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-    //
-    // U.U. müssen Sie diesen Kommentar durch geeigneten Code ersetzen.
-    // Sollte "hier" kein Code nötig sein, löschen diesen Kommentar einfach.
-    //
-    // Hier wäre die geeignete Stelle für mögliche 
-    //      Zustandsvariablen / Exemplarvariablen = Objekt-spezifische Variablen oder
-    //      (u.U. darauffolgend) einen Konstruktor,
-    // sofern derartiges benötigt wird.
-    // Es ist Ihre Entscheidung und sie sollte Sinn machen.
-    //
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
-    
-    
+
+    int lastNumber;
+    int secondNumber;
+    int thirdNumber;
+    int processCounter;
+
+
     /**
      * in the beginning there isn't any number known
      */
     public LastThree(){
-        // U.U. muss hier Code ergänzt werden.
-        // ... ???
+
+        int lastNumber = 0;
+        int secondNumber = 0;
+        int thirdNumber = 0;
+        int processCounter = 0;
+
+
     }//method()
-    
-    
-    
+
+
+
     /**
      * print the last three numbers/values
      */
     public void printLastThree(){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Geben Sie die letzen drei Zahlen aus.
-        // ...
+
+        if (processCounter >= 3) {
+            System.out.printf(" %d %d %d ", thirdNumber, secondNumber, lastNumber );
+        } else if (processCounter == 2) {
+            System.out.printf(" %d %d ", secondNumber, lastNumber );
+        } else if (processCounter == 1){
+            System.out.printf(" %d ", lastNumber );
+        } else {
+            System.out.printf("nix");
+        }
+
+
+
     }//method()
-    
+
     /**
      * process new value
      * 
      * @param value  current value
      */
     public void processNewValue( int value ){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Verarbeite den neuen Wert "value". In Value liegt der aktuelle Wert,
-        // der nun "gemerkt" werden soll.
-        // ...
+        
+        thirdNumber = secondNumber;
+        secondNumber = lastNumber;
+        lastNumber = value;
+        
+        processCounter++;
+        
     }//method()
-    
+
 }
