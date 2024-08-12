@@ -1,2 +1,2 @@
-module AAA_TheLastThree_Distr {
+module AXC_PrimeFactorPrinter_Distr {
 }//module

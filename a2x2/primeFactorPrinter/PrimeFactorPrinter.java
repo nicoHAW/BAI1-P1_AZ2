@@ -21,8 +21,8 @@ package primeFactorPrinter;
 /**
  * PFP :  {@link PrimeFactorPrinter} - see task.
  * 
- * @author   (your name(s)) 
- * @version  (a version number or a date)
+ * @author   Nico Pätzel 
+ * @version  2024/08/12 Version 1
  */
 public class PrimeFactorPrinter {
     
@@ -32,40 +32,34 @@ public class PrimeFactorPrinter {
      * @param number the number to be factorized
      */
     public void printFactorization( long number ){
-        //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-        //###
-        //###
-        //###
-        //###           HIER kommt Ihr Code hin
-        //###
-        //###                    VVVV
-        //###                    VVVV
-        //###                    VVVV
-        //###   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###      VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###         VVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###            VVVVVVVVVVVVVVVVVVVV
-        //###               VVVVVVVVVVVVVV
-        //###                  VVVVVVVV
-        //###                     VV
+        assert ( number >= 2 ) : " Please enter a valid Number >= 2 ";
         
         
         
-        // Fügen Sie hier Ihren Code ein
-        // bzw. ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Zerlegen Sie "number" in seine Primfaktoren.
-        // Sie können hierfür die nachfolgende Methode:
-        //      "long integerSquareRoot( long )"
-        // nutzen.
-        // ...
+        long wrkNumber = number;
+        long sqrtNumber = integerSquareRoot(number);
+        long divisor = 2;
         
         
+        while ( divisor <= sqrtNumber ) {
+            
+            while ( wrkNumber % divisor == 0 ) {                
+                System.out.printf("%d", divisor );
+                
+                wrkNumber /= divisor;
+                sqrtNumber = integerSquareRoot(wrkNumber);
+                
+                if ( wrkNumber != 1 ) System.out.printf("*");
+                
+            }// while
+            
+            divisor++;
+            
+        }//while
         
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        // Sofern Sie kein Vorwissen haben und/oder NICHT wissen was Sie tun
-        // führen Sie KEINE! Änderungen unterhalb dieser Zeilen durch.
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        //
+        if (wrkNumber > 1) System.out.printf("%d", wrkNumber );
+
+        
         System.out.flush();
     }//method()
     

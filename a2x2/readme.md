@@ -1,1 +1,1 @@
-P1 :  The Last Three
+P1 :  PrimeFactorPrinter
