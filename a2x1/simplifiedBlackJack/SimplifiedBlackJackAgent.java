@@ -11,52 +11,67 @@ import static cards.Card.Constant.*;
 /**
  * Simplified Black Jack Agent - see task
  * 
- * @author  (your name(s)) 
- * @version (a version number or a date)
+ * @author  Nico Pätzel 
+ * @version 2024/08/12 Version 1
  */
 public class SimplifiedBlackJackAgent {
-    
-    // Ersetzen Sie diesen Kommentar durch Ihren Code
-    // oder falls kein Code noetig ist, loeschen diesen Kommentar einfach.
-    // Hier waere die Stelle fuer moegliche Zustandsvariablen, Exemplarvariablen
-    // bzw. Objekt-spezifische Variablen oder einen Konstruktor,
-    // sofern derartiges benoetigt wird.
-    // Es ist Ihre Entscheidung und sie sollte Sinn machen.
-    
-    
-    
+    Deck cardDeck;
+    int handVal;
+
+
     /**
      * "Play" Black Jack
      */
     public void playBlackJack(){
-        //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###
-        //###
-        //###
-        //###           HIER kommt Ihr Code hin
-        //###
-        //###                    VVVV
-        //###                    VVVV
-        //###                    VVVV
-        //###   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###      VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###         VVVVVVVVVVVVVVVVVVVVVVVVVV
-        //###            VVVVVVVVVVVVVVVVVVVV
-        //###               VVVVVVVVVVVVVV
-        //###                  VVVVVVVV
-        //###                     VV
-        
-        
-        
-        //...
-        
-        
-        
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        // Sofern Sie kein Vorwissen haben und/oder NICHT wissen was Sie tun
-        // führen Sie KEINE! Änderungen unterhalb dieser Zeilen durch.
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        System.out.flush();
-    }//method()
-    
+        cardDeck = new Deck();
+        Card curCard;
+
+        while ( handVal < 17 ) {
+
+            curCard = cardDeck.deal();
+            Suit curCardSuite = curCard.getSuit();
+            Rank curCardRank = curCard.getRank();
+            int curCardVal;
+            
+            switch (curCard.getRank()) {
+                
+                case JACK, QUEEN, KING :
+                curCardVal = 10; break;
+                
+                case ACE : 
+                curCardVal = 11; break;
+                
+                default : curCardVal = curCardRank.value();
+                
+            }
+            
+            
+            
+            this.handVal += curCardVal;
+            
+            System.out.printf("Card: %s\n", curCard);
+            printCardArray(curCard);
+            System.out.printf("Points: %s\n", curCardVal);
+            System.out.printf("Hand Points: %d\n\n", this.handVal);
+            
+            
+           if ( this.handVal > 21) {
+                System.out.printf("Your a fucking loser");
+            } else if ( this.handVal == 21) {
+                System.out.printf("YEAH! BLACK JACK!");
+            } //if
+            
+           
+           
+        }//while
+
+
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Sofern Sie kein Vorwissen haben und/oder NICHT wissen was Sie tun
+    // führen Sie KEINE! Änderungen unterhalb dieser Zeilen durch.
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    System.out.flush();
+}//method()
+
+
 }//class
