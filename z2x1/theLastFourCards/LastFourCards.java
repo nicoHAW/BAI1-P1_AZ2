@@ -11,43 +11,66 @@ import static cards.Card.Constant.*;
 /**
  * "the Last Four Cards" - see task
  * 
- * @author  (your name(s)) 
- * @version (a version number or a date)
+ * @author  Nico Pätzel 
+ * @version 2024/08/12 Version 2
  */
 public class LastFourCards {
-    
-    // Mögliche Zustandsvariablen/Exemplarvariablen/Objekt-spezifische Variablen
-    // ... ???
-    
-    
-    
+
+    Card cardOne;
+    Card cardTwo;
+    Card cardThree;
+    Card cardFour;
+    int cardCounter;
+
     /**
      * in the beginning there isn't any card known
      */
     public LastFourCards(){
-        // U.U. könnte hier Code ergänzt werden.
+        Card cardOne = null;
+        Card cardTwo = null;
+        Card cardThree = null;
+        Card cardFour = null;
+        cardCounter = 0; 
+
     }//method()
-    
-    
-    
-    
+
+
+
+
     /**
      * print the last four cards
      */
     public void printLastFourCards(){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Geben Sie die letzen vier Karten aus.
-    }//method()
-    
-    /**
-     * process new card
-     * 
-     * @param card current card
-     */
-    public void processNewCard( Card card ){
-        // Ersetzen Sie diesen Kommentar durch Ihren Code.
-        // Verarbeite die neue Karte. Ueber card ist die neu Karte ansprechbar,
-        // die nun "gemerkt" werden soll.
-    }//method()
-    
-}//class
+
+
+        if (cardCounter >= 4) {
+            System.out.printf(" %s %s %s %s \n", cardFour, cardThree, cardTwo, cardOne );
+        } else if (cardCounter == 3) {
+            System.out.printf(" %s %s %s \n", cardThree, cardTwo, cardOne );
+        } else if (cardCounter == 2){
+            System.out.printf(" %s %s \n", cardTwo, cardOne );
+        } else if (cardCounter == 1){
+            System.out.printf(" %s \n", cardOne );
+        } else {
+            System.out.printf("nix\n");
+        }
+
+        }//method()
+
+        /**
+         * process new card
+         * 
+         * @param card current card
+         */
+        public void processNewCard( Card card ){
+            assert ( card != null ) : "Card cant be null";
+            cardCounter++;
+
+            cardFour = cardThree;
+            cardThree = cardTwo;
+            cardTwo = cardOne;
+            cardOne = card;
+
+        }//method()
+
+    }//class
